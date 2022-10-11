@@ -6,50 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="dark light" />
     <link rel="stylesheet" href="./style.css" />
-    <title>Document</title>
+    <title>Streaks</title>
   </head>
   <body>
-    <div class="cover">
-      <h1>Streaks WebApp</h1>
-      <br />
-      <h2>Call to action!</h2>
+    <div class="heading">
+      <h1>Streaks</h1>
     </div>
-    <div class="box">
-      <h2>Do you love keeping your streaks going?</h2>
-      <br />
-      <p>
-        Of course you do! Add a habit that you'd like to do every day and use
-        this app to tick off every day you complete it. See how long you can
-        keep your streak going for! If you miss a day, you will lose your
-        streak. The rest of this lame copy paragraph is just absolute filler
-        drivel, so you don't have to read further. Using this app will change
-        your life! Add a habit now to win a free dinosaur. The app only supports
-        one habit at the moment because the developer doesn't know what they are
-        doing.
-      </p>
-    </div>
-    <div class="action">
-      <h2>What would you like to start doing?</h2>
-      <br />
-      <p>Add a new habit that you want to start doing daily:</p>
-      <input type="text" id="textForm" placeholder="Add your new habit here" />
-      <button type="button" id="submit" onclick="submitNewHabit()">
-        Submit
-      </button>
-      <p>For example "Play guitar for ten minutes"</p>
-    </div>
-    <div class="habit">
-      <h3><span id="habitName"></span></h3>
-      <button id="done" onclick="habitDone(true)">
-        <span id="doneButton"></span>
-      </button>
-      <button id="notDone" onclick="habitDone(false)">
-        <span id="notDoneButton"></span>
-      </button>
-      <p><span id="streakText"></span><span id="streakRecordText"></span></p>
-      <p><span id="failStreakText"></span><span id="failRecordText"></span></p>
-      <p><span id="donePercentageText"></span></p>
-    </div>
+    <div class="item-card">
+      <h3>🏆 8</h3>
+      <h2>Go to the gym</h2>
+      <h3>🔥 4</h3>
+    </end>
+    <div class="item-card">
+      <h3>🏆 8</h3>
+      <h2>Go to the gym</h2>
+      <h3>🚫 4</h3>
+    </end>
+    <div class="item-card add"></div>
+      <h3>+</h3>
+      <h2>Add</h2>
+      <h3>+</h3>
+    </end>
+    <div class="item-card input">
+      <h3>+</h3>
+      <h2><input type="text" id="textForm" placeholder="Name" />
+        <button type="button" id="submit" onclick="submitNewHabit()">
+          Add
+        </button></h2>
+      <h3>+</h3>
+    </end>
     <script src="index.js"></script>
   </body>
-</html>
+  </html>
+
+  <div class="put-this-in-the-js"
+    <h3><span id="habitName"></span></h3>
+    <button id="done" onclick="habitDone(true)">
+      <span id="doneButton"></span>
+    </button>
+    <button id="notDone" onclick="habitDone(false)">
+      <span id="notDoneButton"></span>
+    </button>
+    <p><span id="streakText"></span><span id="streakRecordText"></span></p>
+    <p><span id="failStreakText"></span><span id="failRecordText"></span></p>
+    <p><span id="donePercentageText"></span></p>
+  </div>
