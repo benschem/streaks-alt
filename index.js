@@ -13,6 +13,15 @@ let habits = [
   },
 ];
 
+// document.addEventListener('DOMContentLoaded', function() {
+//   const div = document.createElement('div');
+//   div.id = 'container';
+//   div.innerHTML = 'Hi there!';
+//   div.className = 'border pad';
+
+//   document.body.appendChild(div);
+// }, false);
+
 function refreshHabitList() {
   document.getElementById("habitName").innerHTML = habits[1].habitName;
   document.getElementById("streakText").innerHTML = habits[1].streak + "🔥";
