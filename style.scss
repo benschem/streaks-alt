@@ -1,15 +1,16 @@
 $font-stack: Helvetica, sans-serif;
 $primary-color: #333;
+$done-color: rgba(6, 204, 39, 0.9);
 
 body {
   font: 100% $font-stack;
   color: $primary-color;
 }
 
-.container {
+.cards {
   display: grid;
   grid-template-columns: repeat(5, 180px);
-  grid-template-rows: 250px;
+  grid-template-rows: repeat(5, 250px);
   gap: 25px;
 }
 
@@ -23,9 +24,10 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   font-size: 2em;
+  border: 3px solid $primary-color;
 
   &:hover {
-    background-color: blue;
+    border: 3px solid $done-color;
   }
 
   > h2 {
@@ -52,7 +54,11 @@ body {
     }
   }
 
-  &.add {
+  &#add {
+    &:hover {
+      border: 3px solid $primary-color;
+    }
+
     > h3:first-of-type {
       font-size: 0.75em;
     }
@@ -61,39 +67,47 @@ body {
       font-size: 1.5em;
     }
 
-    > input {
-      padding: 0;
-      width: 87%;
-      height: 10%;
+    > form {
       position: absolute;
-      top: 40%;
+      top: 38%;
       left: 5%;
-    }
 
-    > button {
-      padding: 0;
-      width: 40%;
-      height: 10%;
-      background-color: lightgrey;
-      border: none;
-      border-radius: 0px;
-      position: absolute;
-      top: 55%;
-      left: 30%;
-    }
+      > input:first-of-type {
+        margin: 3%;
+        width: 86%;
+        text-align: center;
+        color: $primary-color;
+        font-weight: bold;
+        border-style: none;
+        font-size: 0.75em;
+      }
 
-    > button:hover {
-      background-color: grey;
-      color: white;
+      > input:last-of-type {
+        position: relative;
+        width: 90%;
+        height: 20%;
+        margin: 2%;
+        // padding: 6%;
+        font-size: 0.8em;
+        background: none;
+        color: $primary-color;
+        border: 2px solid $primary-color;
+        border-radius: 10px;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+        // position: absolute;
+        // left: 10%;
+        // top: 10%;
+
+        &:hover {
+          border: 2px solid $done-color;
+        }
+      }
     }
   }
 }
 
 
 .done {
-  box-shadow: -0 0 10px rgba(16, 230, 52, 0.8);
-}
-
-.not-done {
-  box-shadow: 0 0 10px rgba(253,1,1,0.8);
+  background-color: $done-color;
+  &:hover { border: solid 3px red }
 }
