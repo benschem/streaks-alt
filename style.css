@@ -25,90 +25,84 @@ body {
 }
 
 .container {
-  position: fixed;
-  display: flex; /* or inline-flex */
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(5, 180px);
+  grid-template-rows: 250px;
+  gap: 25px;
 }
 
 .heading {
-  flex: 1 1 auto;
   text-align: center;
   font-size: x-large;
 }
 
-.item-card {
+.card {
   position: relative;
-  flex: 0 1 auto;
-  height: 250px;
-  width: 180px;
-  margin: 10px;
-  border: 5px solid rgba(0, 0, 0, 0.4);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   font-size: 2em;
 }
-.item-card > dt {
+.card:hover {
+  background-color: blue;
+}
+.card > h2 {
   font-size: 0.75em;
   text-align: center;
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.item-card > dt > input {
-  width: 100px;
-}
-.item-card > dt > button {
-  width: 108px;
-}
-.item-card > dd {
-  font-size: 1em;
+.card > h3 {
   position: absolute;
   margin: 0;
 }
-.item-card > dd:first-of-type {
+.card > h3:first-of-type {
   top: 10px;
   left: 10px;
+  font-size: 0.5em;
 }
-.item-card > dd:last-of-type {
+.card > h3:last-of-type {
   bottom: 10px;
   right: 10px;
+  font-size: 1em;
 }
-.item-card.add {
-  border: 3px solid rgb(148, 148, 148);
+.card.add > h3:first-of-type {
+  font-size: 0.75em;
 }
-.item-card.add > dd {
+.card.add > h3:last-of-type {
   font-size: 1.5em;
 }
-.item-card.add > dd:first-of-type {
-  top: 0px;
+.card.add > input {
+  padding: 0;
+  width: 87%;
+  height: 10%;
+  position: absolute;
+  top: 40%;
+  left: 5%;
 }
-.item-card.add > dd:last-of-type {
-  bottom: 0px;
+.card.add > button {
+  padding: 0;
+  width: 40%;
+  height: 10%;
+  background-color: lightgrey;
+  border: none;
+  border-radius: 0px;
+  position: absolute;
+  top: 55%;
+  left: 30%;
 }
-.item-card.done {
-  border: 3px solid rgb(230, 216, 16);
-  box-shadow: 0 0 10px rgba(230, 216, 16, 0.8);
+.card.add > button:hover {
+  background-color: grey;
+  color: white;
 }
-.item-card.not-done {
-  border: 3px solid rgba(253, 1, 1, 0.5);
+
+.done {
+  box-shadow: 0 0 10px rgba(16, 230, 52, 0.8);
+}
+
+.not-done {
   box-shadow: 0 0 10px rgba(253, 1, 1, 0.8);
-}
-
-.emoji {
-  font-size: 0.75em;
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-}
-
-.number {
-  font-size: 0.75em;
-  margin: 0;
-  padding: 0;
-  display: inline-block;
 }
 
 /*# sourceMappingURL=style.css.map */

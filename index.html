@@ -14,38 +14,24 @@
       <h1>Streaks</h1>
     </div>
     <div class="container">
-      <dl class="item-card done">
-        <dt>Go to the gym</dt>
-        <dd>
-          <div class="emoji">🏆</div>
-          <div class="number">8</div>
-        </dd>
-        <dd>
-          <div class="number">4</div>
-          <div class="emoji">🔥</div>
-        </dd>
-      </dl>
-      <dl class="item-card not-done">
-        <dt>Go to the gym</dt>
-        <dd>
-          <div class="emoji">🏆</div>
-          <div class="number">8</div>
-        </dd>
-        <dd>
-          <div class="number">4</div>
-          <div class="emoji">🚫</div>
-        </dd>
-      </dl>
-      <dl class="item-card add">
-        <dt>
-          <input type="text" id="textForm" placeholder="Activity name" />
-          <button type="button" id="submit" onclick="submitNewHabit()">
-            Add
-          </button>
-        </dt>
-        <dd>+</dd>
-        <dd>+</dd>
-      </dl>
+      <div class="card">
+        <h3>🏆 8</h3>
+        <h2>Go to the gym</h2>
+        <h3>🔥 4</h3>
+      </div>
+      <div class="card">
+        <h3>🏆 8</h3>
+        <h2>Apply for jobs</h2>
+        <h3>🚫 4</h3>
+      </div>
+      <div class="card add">
+        <h3>+</h3>
+        <input type="text" id="textForm" placeholder="Goal Name" />
+        <button type="button" id="submit" onclick="submitNewHabit()">
+          Add
+        </button>
+        <h3>+</h3>
+      </div>
     </div>
     <script src="index.js"></script>
   </body>
