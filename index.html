@@ -7,39 +7,37 @@
     <meta name="color-scheme" content="dark light" />
     <link rel="stylesheet" href="./style.css" />
     <title>Streaks</title>
+    <link rel="shortcut icon" type="image/jpg" href="images/favicon.gif" />
   </head>
   <body>
     <div class="heading">
       <h1>Streaks</h1>
     </div>
-    <div class="item-card">
-      <h3>🏆 8</h3>
-      <h2>Go to the gym</h2>
-      <h3>🔥 4</h3>
-    </end>
-    <div class="item-card">
-      <h3>🏆 8</h3>
-      <h2>Go to the gym</h2>
-      <h3>🚫 4</h3>
-    </end>
-    <div class="item-card add"></div>
-      <h3>+</h3>
-      <h2>Add</h2>
-      <h3>+</h3>
-    </end>
-    <div class="item-card input">
-      <h3>+</h3>
-      <h2><input type="text" id="textForm" placeholder="Name" />
+    <div class="container">
+      <div class="card">
+        <h3>🏆 8</h3>
+        <h2>Go to the gym</h2>
+        <h3>🔥 4</h3>
+      </div>
+      <div class="card">
+        <h3>🏆 8</h3>
+        <h2>Apply for jobs</h2>
+        <h3>🚫 4</h3>
+      </div>
+      <div class="card add">
+        <h3>+</h3>
+        <input type="text" id="textForm" placeholder="Goal Name" />
         <button type="button" id="submit" onclick="submitNewHabit()">
           Add
-        </button></h2>
-      <h3>+</h3>
-    </end>
+        </button>
+        <h3>+</h3>
+      </div>
+    </div>
     <script src="index.js"></script>
   </body>
-  </html>
+</html>
 
-  <div class="put-this-in-the-js"
+<!-- <div class="put-this-in-the-js">
     <h3><span id="habitName"></span></h3>
     <button id="done" onclick="habitDone(true)">
       <span id="doneButton"></span>
@@ -50,4 +48,4 @@
     <p><span id="streakText"></span><span id="streakRecordText"></span></p>
     <p><span id="failStreakText"></span><span id="failRecordText"></span></p>
     <p><span id="donePercentageText"></span></p>
-  </div>
+  </div> -->
