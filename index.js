@@ -81,7 +81,6 @@ class Card {
 
 const theAddCard = document.getElementById('add');
 const addForm = document.getElementById('add-form');
-console.log(addForm);
 addForm.addEventListener('submit', (event) => {
   event.preventDefault()
   addHabitCard();
@@ -90,12 +89,10 @@ addForm.addEventListener('submit', (event) => {
 function addHabitCard() {
   const habitName = getName();
   const habit = new Habit(habitName);
-  console.log(habit);
   let newCard = new Card(habit);
   newCard = newCard.background.outerHTML;
-  console.log(newCard);
   theAddCard.insertAdjacentHTML("beforebegin", newCard);
-  listenForClicks();
+  newCard = document.querySelector('.new');
 }
 
 function getName() {
@@ -106,26 +103,22 @@ function getName() {
 
 // CLICKING ON A HABIT
 
-
-
-function listenForClicks() {
-  const allHabitCards = document.querySelectorAll('.card');
-  allHabitCards.forEach(card => {
+const allHabitCards = document.querySelectorAll('.card');
+allHabitCards.forEach(card => {
+  if (!isTheAddCard(card)) {
     listenForClick(card);
-  });
-
-  function listenForClick(card) {
-    if (!isTheAddCard(card)) {
-      card.addEventListener('click', () => {
-        if(!isDone(card)) {
-          markDone(card);
-        } else {
-          markNotDone(card);
-        }
-      })
-    };
   }
-}
+});
+
+function listenForClick(card) {
+  card.addEventListener('click', () => {
+    if(!isDone(card)) {
+      markDone(card);
+    } else {
+      markNotDone(card);
+    }
+  })
+};
 
 function isDone(card) {
   if (card.classList.contains('done')) {
