@@ -1,133 +1,166 @@
-let userInput = "";
+// CLASSES
 
-let habits = [
-  {
-    habitName: this.habitName,
-    streak: this.streak,
-    streakRecord: this.streakRecord,
-    failStreak: this.failStreak,
-    failRecord: this.failRecord,
-    totalDaysDone: this.totalDaysDone,
-    totalDaysNotDone: this.totalDaysNotDone,
-    donePercentage: this.donePercentage,
-  },
-];
+class Habit {
+  constructor(name){
+    this.name = name;
+    this.doneToday = false;
+    this.streak = 0;
+    this.longestStreak = 0;
+    this.gap = 0;
+    this.longestGap = 0;
+  }
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   const div = document.createElement('div');
-//   div.id = 'container';
-//   div.innerHTML = 'Hi there!';
-//   div.className = 'border pad';
+  update() {
+    if(this.doneToday) {
+      increase(this.streak);
+      reset(this.gap);
+      updateLongest(this.streak, this.longestStreak);
+    } else {
+      increase(this.gap);
+      reset(this.streak);
+      updateLongest(this.gap, this.longestGap);
+    }
+  }
 
-//   document.body.appendChild(div);
-// }, false);
+  increase(item) {
+    item++;
+  }
 
-function refreshHabitList() {
-  document.getElementById("habitName").innerHTML = habits[1].habitName;
-  document.getElementById("streakText").innerHTML = habits[1].streak + "🔥";
-  document.getElementById("streakRecordText").innerHTML =
-    habits[1].streakRecord + "🏆";
-  document.getElementById("failStreakText").innerHTML =
-    habits[1].failStreak + "🚫";
-  document.getElementById("failRecordText").innerHTML =
-    habits[1].failRecord + "🏆";
-  document.getElementById("doneButton").innerHTML = "✅";
-  document.getElementById("notDoneButton").innerHTML = "🚫";
-  document.getElementById("donePercentageText").innerHTML =
-    "Avg Consistency: " + habits[1].donePercentage + "%";
+  reset(item) {
+    item = 0;
+  }
+
+  updateLongest(current, longest) {
+    if(current > longest) {
+      longest = current;
+    }
+  }
+};
+
+class Card {
+  constructor(habit){
+    this.background = this.background();
+    this.record = this.streakRecord(habit.longestStreak);
+    this.title = this.nameAsTitle(habit.name);
+    this.currentStreak = this.currentStreak(habit);
+    this.background.appendChild(this.record);
+    this.background.appendChild(this.title);
+    this.background.appendChild(this.currentStreak);
+  }
+
+  background() {
+    let div = document.createElement('div');
+    div.className = 'card';
+    return div
+  }
+
+  streakRecord(longestStreak) {
+    let h3 = document.createElement('h3');
+    h3.innerHTML = `🏆 ${longestStreak.toString()}`;
+    return h3;
+  }
+
+  nameAsTitle(name) {
+    let h2 = document.createElement('h2');
+    h2.innerHTML = `${name}`;
+    return h2;
+  }
+
+  currentStreak(habit) {
+    let h3 = document.createElement('h3');
+    if(habit.streak > habit.gap) {
+      h3.innerHTML = `🔥 ${habit.streak.toString()}`;
+    } else {
+      h3.innerHTML = `🚫 ${habit.gap.toString()}`;
+    }
+    return h3;
+  }
 }
 
-function submitNewHabit() {
-  userInput = document.getElementById("textForm").value;
-  userinput = userInput.trim;
-  let habit = {
-    habitName: userInput,
-    streak: 0,
-    streakRecord: 0,
-    failStreak: 0,
-    failRecord: 0,
-    totalDaysDone: 0,
-    totalDaysNotDone: 0,
-    donePercentage: 0,
+// ADDING A NEW HABIT
+
+const theAddCard = document.getElementById('add');
+const addForm = document.getElementById('add-form');
+console.log(addForm);
+addForm.addEventListener('submit', (event) => {
+  event.preventDefault()
+  addHabitCard();
+});
+
+function addHabitCard() {
+  const habitName = getName();
+  const habit = new Habit(habitName);
+  console.log(habit);
+  let newCard = new Card(habit);
+  newCard = newCard.background.outerHTML;
+  console.log(newCard);
+  theAddCard.insertAdjacentHTML("beforebegin", newCard);
+  listenForClicks();
+}
+
+function getName() {
+  let name = document.getElementById('newHabitName').value;
+  name = name.trim().toString();
+  return name;
+}
+
+// CLICKING ON A HABIT
+
+
+
+function listenForClicks() {
+  const allHabitCards = document.querySelectorAll('.card');
+  allHabitCards.forEach(card => {
+    listenForClick(card);
+  });
+
+  function listenForClick(card) {
+    if (!isTheAddCard(card)) {
+      card.addEventListener('click', () => {
+        if(!isDone(card)) {
+          markDone(card);
+        } else {
+          markNotDone(card);
+        }
+      })
+    };
+  }
+}
+
+function isDone(card) {
+  if (card.classList.contains('done')) {
+    return true;
+  } else {
+    return false;
   };
-  habits.push(habit);
-  refreshHabitList();
 }
 
-function increaseStreak() {
-  habits[1].streak = habits[1].streak + 1;
-}
-
-function increaseFailStreak() {
-  habits[1].failStreak = habits[1].failStreak + 1;
-}
-
-function resetStreak() {
-  habits[1].streak = 0;
-}
-
-function resetFailStreak() {
-  habits[1].failStreak = 0;
-}
-
-function updateStreak(doneToday) {
-  if (doneToday) {
-    increaseStreak();
-    resetFailStreak();
+function isTheAddCard(card) {
+  if (card.id === 'add') {
+    return true;
   } else {
-    increaseFailStreak();
-    resetStreak();
+    return false;
   }
 }
 
-function increaseStreakRecord() {
-  if (habits[1].streak > habits[1].streakRecord) {
-    habits[1].streakRecord = habits[1].streakRecord + 1;
-  }
+function markDone(card) {
+  card.classList.add('done');
 }
 
-function increaseFailStreakRecord() {
-  if (habits[1].failStreak > habits[1].failRecord) {
-    habits[1].failRecord = habits[1].failRecord + 1;
-  }
+function markNotDone(card) {
+  card.classList.remove('done');
 }
 
-function updateRecord(doneToday) {
-  if (doneToday) {
-    increaseStreakRecord();
-  } else {
-    increaseFailStreakRecord();
-  }
-}
+// A DAY PASSES
 
-function average(totalDaysDone, totalDaysNotDone) {
-  return (totalDaysDone / (totalDaysDone + totalDaysNotDone)) * 100;
-}
-
-function updateDonePercentage(doneToday) {
-  if (doneToday) {
-    habits[1].totalDaysDone = habits[1].totalDaysDone + 1;
-  } else {
-    habits[1].totalDaysNotDone = habits[1].totalDaysNotDone + 1;
-  }
-  habits[1].donePercentage = average(
-    habits[1].totalDaysDone,
-    habits[1].totalDaysNotDone
-  );
-}
-
-function habitDone(doneToday) {
-  if (doneToday) {
-    updateStreak(true);
-    updateRecord(true);
-    updateDonePercentage(true);
-    refreshHabitList();
-  } else {
-    updateStreak(false);
-    updateRecord(false);
-    updateDonePercentage(false);
-    refreshHabitList();
-  }
-}
-
-// How to keep track of days???
+// if (a day passes) {
+//   Cards.forEach(card => {
+//     if (card.id = 'done') {
+//       card.habit.doneToday = true;
+//     }
+//     else {
+//       card.habit.doneToday = true;
+//     }
+//     card.habit.update();
+//   })
+// }
