@@ -21,6 +21,7 @@ body {
 }
 
 .card {
+  background-color: #FAF7F0;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   border-radius: 10px;
@@ -89,6 +90,7 @@ body {
       text-align: center;
 
       > input:first-of-type {
+        background-color: #FAF7F0;
         margin: 3%;
         padding: 5%;
         width: 78%;
