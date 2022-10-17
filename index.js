@@ -5,42 +5,27 @@ class Habit {
     this.name = name;
     this.doneToday = false;
     this.streak = 0;
-    this.longestStreak = 0;
+    this.recordStreak = 0;
     this.gap = 0;
-    this.longestGap = 0;
-  }
-
-  update() {
-    if(this.doneToday) {
-      increase(this.streak);
-      reset(this.gap);
-      updateLongest(this.streak, this.longestStreak);
-    } else {
-      increase(this.gap);
-      reset(this.streak);
-      updateLongest(this.gap, this.longestGap);
-    }
   }
 
   increase(item) {
     item++;
   }
 
-  reset(item) {
-    item = 0;
+  decrease(item) {
+    item--;
   }
 
-  updateLongest(current, longest) {
-    if(current > longest) {
-      longest = current;
-    }
+  reset(item) {
+    item = 0;
   }
 };
 
 class Card {
   constructor(habit){
     this.background = this.background();
-    this.record = this.streakRecord(habit.longestStreak);
+    this.record = this.streakRecord(habit.recordStreak);
     this.title = this.nameAsTitle(habit.name);
     this.currentStreak = this.currentStreak(habit);
     this.background.appendChild(this.record);
@@ -54,9 +39,9 @@ class Card {
     return div
   }
 
-  streakRecord(longestStreak) {
+  streakRecord(recordStreak) {
     let h3 = document.createElement('h3');
-    h3.innerHTML = `🏆 ${longestStreak.toString()}`;
+    h3.innerHTML = `🏆 ${recordStreak.toString()}`;
     return h3;
   }
 
@@ -138,22 +123,34 @@ function isTheAddCard(card) {
 
 function markDone(card) {
   card.classList.add('done');
+  increase(card.habit.streak);
+  decrease(card.habit.gap);
+  if(card.habit.streak > card.habit.recordStreak) {
+    increase(card.habit.recordStreak);
+  }
 }
 
 function markNotDone(card) {
   card.classList.remove('done');
+  decrease(card.habit.streak);
+  decrease(card.habit.gap);
+  if(card.habit.streak < card.habit.recordStreak) {
+    decrease(card.habit.recordStreak);
+  }
 }
 
-// A DAY PASSES
+// UPDATE WHEN A DAY PASSES
 
-// if (a day passes) {
-//   Cards.forEach(card => {
-//     if (card.id = 'done') {
-//       card.habit.doneToday = true;
+// if(a_day_passes) {
+//   Habits.forEach(habit => {
+//     if(habit.doneToday) {
+//       reset(habit.gap);
+//       if (habit.streak > habit.recordStreak) {
+//         increase(habit.recordStreak);
+//       }
+//     } else {
+//       reset(habit.streak);
+//       increase(habit.gap);
 //     }
-//     else {
-//       card.habit.doneToday = true;
-//     }
-//     card.habit.update();
 //   })
 // }
