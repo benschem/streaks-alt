@@ -1,39 +1,51 @@
+// DEFINES THE 'CARD' THAT THE HABIT APPEARS ON
+
 export class CardElement {
   constructor(habit) {
-    this.background = this.background();
-    this.record = this.streakRecord(habit.recordStreak);
-    this.title = this.nameAsTitle(habit.name);
-    this.currentStreak = this.currentStreak(habit);
-    this.background.appendChild(this.record);
-    this.background.appendChild(this.title);
-    this.background.appendChild(this.currentStreak);
+    this.divCard = this.cardAsElement();
+    this.h3record = this.recordAsElement(habit.record);
+    this.h2name = this.nameAsElement(habit.name);
+    this.h3streak = this.streakAsElement(habit.streak, habit.gap);
+  };
+
+  returnDOMnode() {
+    Object.assign(document.createElement('div'), {
+      className: 'card',
+      innerHTML: '<input type="checkbox" name="buy" value="260" checked="" onclick="javascript:basket.checkItem();">&nbsp;'
+    })
+
+    let DOMnode  = this.divCard;
+    DOMnode.appendChild(this.h3record);
+    DOMnode.appendChild(this.h2name);
+    DOMnode.appendChild(this.h3streak);
+    return DOMnode;
   }
 
-  background() {
+  cardAsElement() {
     let div = document.createElement('div');
     div.className = 'card';
     return div;
-  }
+  };
 
-  streakRecord(recordStreak) {
+  recordAsElement(record) {
     let h3 = document.createElement('h3');
-    h3.innerHTML = `🏆 ${recordStreak.toString()}`;
+    h3.innerHTML = `🏆 ${record.toString()}`;
     return h3;
-  }
+  };
 
-  nameAsTitle(name) {
+  nameAsElement(name) {
     let h2 = document.createElement('h2');
     h2.innerHTML = `${name}`;
     return h2;
-  }
+  };
 
-  currentStreak(habit) {
+  streakAsElement(streak, gap) {
     let h3 = document.createElement('h3');
-    if (habit.streak > habit.gap) {
-      h3.innerHTML = `🔥 ${habit.streak.toString()}`;
+    if (streak > gap) {
+      h3.innerHTML = `🔥 ${streak.toString()}`;
     } else {
-      h3.innerHTML = `🚫 ${habit.gap.toString()}`;
+      h3.innerHTML = `🚫 ${gap.toString()}`;
     }
     return h3;
-  }
-}
+  };
+};

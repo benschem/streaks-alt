@@ -1,9 +1,11 @@
+// DEFINES A HABIT
+
 export class Habit {
   constructor(name) {
     this.name = name;
     this.doneToday = false;
     this.streak = 0;
-    this.recordStreak = 0;
+    this.record = 0;
     this.gap = 0;
   }
 
