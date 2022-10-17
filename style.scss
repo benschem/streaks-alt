@@ -27,12 +27,14 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   font-size: 2em;
   border: 3px solid $primary-color;
+  cursor: pointer;
 
   &:hover {
     border: 3px solid $done-color;
   }
 
   > h2 {
+    cursor: pointer;
     grid-row: 2;
     font-size: 0.75em;
     text-align: center;
@@ -45,20 +47,21 @@ body {
   }
 
   > h3 {
+    cursor: pointer;
     height: auto;
     margin: 0;
 
     &:first-of-type {
-      grid-row: 1 1;
+      grid-row: 1;
       font-size: 0.5em;
       align-self: start;
       justify-self: start;
       padding-left: 3%;
       padding-top: 3%;
-    }
+    }//
 
     &:last-of-type {
-      grid-row: 1 1;
+      grid-row: 3;
       font-size: 1em;
       align-self: end;
       justify-self: end;
@@ -67,16 +70,19 @@ body {
   }
 
   &#add {
+    cursor: default;
     &:hover {
       border: 3px solid $primary-color;
     }
 
     > h3:first-of-type {
       font-size: 0.75em;
+      cursor: default;
     }
 
     > h3:last-of-type {
       font-size: 1.5em;
+      cursor: default;
     }
 
     > form {
@@ -106,6 +112,7 @@ body {
         border-right: 2px solid $primary-color;
         border-radius: 10px;
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+        cursor: pointer;
 
         &:hover {
           border: 2px solid #007aff;

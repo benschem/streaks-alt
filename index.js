@@ -91,11 +91,11 @@ function getName() {
 const allHabitCards = document.querySelectorAll('.card');
 allHabitCards.forEach(card => {
   if (!isTheAddCard(card)) {
-    listenForClick(card);
+    markDoneOnClick(card);
   }
 });
 
-function listenForClick(card) {
+function markDoneOnClick(card) {
   card.addEventListener('click', () => {
     if(!isDone(card)) {
       markDone(card);
