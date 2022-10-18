@@ -94,5 +94,6 @@ function createCardElement(habit) {
 function getName() {
   let name = document.getElementById('newHabitName').value;
   name = name.trim().toString();
+  document.getElementById('newHabitName').value = '';
   return name;
 };
