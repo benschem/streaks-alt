@@ -1,6 +1,7 @@
 $font-stack: Helvetica, sans-serif;
 $primary-color: #333;
 $done-color: rgba(6, 204, 39, 0.9);
+$card-color: #FAF7F0;
 
 body {
   font: 100% $font-stack;
@@ -13,17 +14,28 @@ body {
 }
 
 .cards {
-  // justify-content: space-between;
   display: grid;
-  grid-template-columns: repeat(6, 180px);
-  grid-template-rows: repeat(5, 250px);
+  // grid-template-columns: repeat(5, 1fr);
+  @media (max-width: 320px ) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @media (min-width: 320px ) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 768px ) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @media (min-width: 1200px ) {
+    grid-template-columns: repeat(7, 1fr);
+  }
+  grid-auto-rows: 1fr;
   gap: 20px;
 }
 
 .card {
-  background-color: #FAF7F0;
+  background-color: $card-color;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 33% 33% 33%;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   font-size: 2em;
@@ -35,16 +47,17 @@ body {
   }
 
   > h2 {
+    @media (max-width: 768px ) { font-size: 0.5em; }
+    @media (min-width: 768px ) { font-size: 0.75em; }
     cursor: pointer;
     grid-row: 2;
-    font-size: 0.75em;
     text-align: center;
     padding-left: 3%;
     padding-right: 3%;
     align-self: center;
     overflow: hidden;
     overflow-wrap: break-word;
-    max-height: 148px;
+    max-height: 50px;
   }
 
   > h3 {
@@ -71,29 +84,23 @@ body {
   }
 
   &#add {
+    display: grid;
+    grid-template-rows: auto;
     cursor: default;
     &:hover {
       border: 3px solid $primary-color;
     }
 
-    > h3:first-of-type {
-      font-size: 0.75em;
-      cursor: default;
-    }
-
-    > h3:last-of-type {
-      font-size: 1.5em;
-      cursor: default;
-    }
-
     > form {
       text-align: center;
+      display: grid;
 
       > input:first-of-type {
-        background-color: #FAF7F0;
-        margin: 3%;
+        background-color: $card-color;
+        margin: 8%;
         padding: 5%;
         width: 78%;
+        justify-self: center;
         text-align: center;
         color: $primary-color;
         font-weight: bold;
@@ -102,11 +109,14 @@ body {
       }
 
       > input:last-of-type {
-        position: relative;
-        width: 90%;
-        margin: 2%;
-        padding: 5%;
-        font-size: 0.4em;
+        justify-self: end;
+        align-self: end;
+        margin-right: 4%;
+        margin-bottom: 2%;
+        width: 40%;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        font-size: 0.6em;
         font-weight: bold;
         background: none;
         color: $primary-color;
@@ -124,8 +134,16 @@ body {
   }
 }
 
-
 .done {
-  background-color: $done-color;
+  animation: colorchange 0.5s forwards;
+  @keyframes colorchange {
+    0% {
+      background-color: $card-color;
+    }
+    100% {
+      background-color: $done-color;
+    }
+  }
+
   &:hover { border: solid 3px red }
 }
