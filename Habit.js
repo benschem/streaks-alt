@@ -1,12 +1,13 @@
 // DEFINES A HABIT
 
 export class Habit {
-  constructor(name) {
+  constructor({name, doneToday, streak, record, gap}) {
+    this.id = Date.now()
     this.name = name;
-    this.doneToday = false;
-    this.streak = 0;
-    this.record = 0;
-    this.gap = 0;
+    this.doneToday = doneToday || false;
+    this.streak = streak || 0;
+    this.record = record || 0;
+    this.gap = gap || 0;
   }
 
   increase(item) {
@@ -20,4 +21,6 @@ export class Habit {
   reset(item) {
     item = 0;
   }
+
+  //  window.localStorage.setItem(key, value). getItem(key), removeItem(key), clear()
 }

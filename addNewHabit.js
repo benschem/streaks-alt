@@ -1,3 +1,16 @@
+// ON PAGE LOAD
+
+const STORAGE_KEY = "habits";
+
+window.addEventListener('load', (event) => {
+  let habits = JSON.parse(window.localStorage.getItem(STORAGE_KEY));
+  habits.forEach(habit => {
+    console.log(habit);
+    let newCard = createCardElement(habit);
+    theAddCard.insertAdjacentElement("beforebegin", newCard);
+  });
+});
+
 // USER CLICKS ON A HABIT TO MARK IT DONE FOR THAT DAY
 
 import { Habit } from "./Habit.js";
@@ -75,12 +88,15 @@ const theAddCard = document.getElementById('add');
 function addNewHabit() {
   let newHabit = createHabit();
   let newCard = createCardElement(newHabit);
+  let habits = JSON.parse(window.localStorage.getItem(STORAGE_KEY)) || [];
+  habits.push(newHabit);
+  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(habits));
   theAddCard.insertAdjacentElement("beforebegin", newCard);
 };
 
 function createHabit() {
   const habitName = getName();
-  const habit = new Habit(habitName);
+  const habit = new Habit({name: habitName});
   return habit;
 };
 

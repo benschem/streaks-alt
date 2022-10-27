@@ -6,19 +6,24 @@ export class CardElement {
     this.h3record = this.recordAsElement(habit.record);
     this.h2name = this.nameAsElement(habit.name);
     this.h3streak = this.streakAsElement(habit.streak, habit.gap);
+    this.id = habit.id;
   };
 
   returnDOMnode() {
-    Object.assign(document.createElement('div'), {
-      className: 'card',
-      innerHTML: '<input type="checkbox" name="buy" value="260" checked="" onclick="javascript:basket.checkItem();">&nbsp;'
-    })
+    // Object.assign(document.createElement('div'), {
+    //   className: 'card',
+    //   id: this.id,
+    //   innerHTML: ''
+    // })
+    let el = document.createElement('div');
+    el.setAttribute("class", "card");
+    el.setAttribute("id", this.id)
 
-    let DOMnode  = this.divCard;
-    DOMnode.appendChild(this.h3record);
-    DOMnode.appendChild(this.h2name);
-    DOMnode.appendChild(this.h3streak);
-    return DOMnode;
+    // let DOMnode  = this.divCard;
+    el.appendChild(this.h3record);
+    el.appendChild(this.h2name);
+    el.appendChild(this.h3streak);
+    return el;
   }
 
   cardAsElement() {
