@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -n SERVER,CLIENT -c green,blue \"yarn workspace server dev\" \"yarn workspace client dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "version": "0.0.0"
+}

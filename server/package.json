@@ -1,0 +1,9 @@
+{
+  "name": "streaks-backend",
+  "version": "0.0.0",
+  "description": "Keep track of your daily habits",
+  "main": "index.js",
+  "repository": "https://github.com/benschem/streaks-alt",
+  "author": "Ben Schembri",
+  "license": "MIT"
+}
