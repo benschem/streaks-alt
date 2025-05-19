@@ -35,7 +35,7 @@ client/dist-ssr/
 client/dist/
 server/dist/
 
-# Yarn Berry
+# === Yarn ===
 .pnp.*
 .yarn/*
 !.yarn/patches
