@@ -1,9 +1,30 @@
 {
-  "name": "streaks-backend",
+  "name": "server",
   "version": "0.0.0",
   "description": "Keep track of your daily habits",
   "main": "index.js",
   "repository": "https://github.com/benschem/streaks-alt",
   "author": "Ben Schembri",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "db:init": "sqlite3 data/habits.sqlite3 < db/schema.sql",
+    "dev": "nodemon index.js",
+    "lint": "eslint . --ext js",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write ."
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.27.0",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-security": "^3.0.1",
+    "globals": "^16.1.0",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.5.3"
+  },
+  "type": "module"
 }

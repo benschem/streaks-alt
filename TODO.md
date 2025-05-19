@@ -2,17 +2,16 @@
 
 ## Project Setup
 
-- [ ] Set up folder structure
-- [ ] Set up backend with Express + SQLite3
-- [ ] Set up frontend with React + Vite
-- [ ] Add shared `.env` file support
-- [ ] Install and configure ESLint + Prettier
-- [ ] Add logging system (e.g., morgan + winston)
-
-Stretch:
-
-- [ ] Add .editorconfig for consistent formatting across editors.
-- [ ] Add Husky + lint-staged to enforce linting/prettier on commit (optional but good for solo or team work).
+- [x] Set up folder structure
+- [x] Set up backend with Express
+- [x] Set up frontend with React + Vite
+- [x] Add `.env` file and `.env.example` for both
+- [x] Install and configure ESLint + Prettier for frontend
+- [x] Install and configure ESLint + Prettier for backend
+- [ ] Set up SQLite3 backend database
+- [ ] Set up SQLite3 backend schema
+- [ ] Set up SQLite3 backend migrations
+- [ ] Set up SQLite3 backend seeds
 
 ## Architecture
 
@@ -27,8 +26,8 @@ Stretch:
 
 ### Core Setup
 
-- [ ] Enable ESM in Node (`"type": "module"`)
-- [ ] Set up Express app with routes folder
+- [x] Enable ESM in Node (`"type": "module"`)
+- [x] Set up Express app with routes folder
 - [ ] Add middlewares (`express.json`, `express.urlencoded`)
 - [ ] Add custom error handler middleware
 - [ ] Set up morgan logging for HTTP requests
@@ -76,8 +75,8 @@ Optional:
 
 ### Core Setup
 
-- [ ] Set up React with Vite
-- [ ] Add Tailwind or CSS Modules
+- [x] Set up React with Vite
+- [ ] Consider using postCSS
 - [ ] Configure routing (e.g., React Router)
 - [ ] Set up global state/context for auth
 - [ ] Set up API utility for HTTP requests with fetch
@@ -123,9 +122,6 @@ Suggest:
 - [ ] Use CSRF protection for forms or fetch requests
 - [ ] Validate and sanitize all input (e.g., `express-validator`)
 - [ ] Escape output if using any HTML injection
-
-Consider:
-
 - [ ] Helmet middleware for setting HTTP headers
 - [ ] CORS policy setup (even if only between local ports during dev)
 - [ ] Session expiry / inactivity timeout
@@ -145,10 +141,10 @@ Optional:
 ## Deployment
 
 - [ ] Set up `.env` variables for prod
-- [ ] Add Dockerfile (optional)
-- [ ] Deploy backend (e.g., Railway, Fly.io, Render)
-- [ ] Deploy frontend (e.g., Vercel, Netlify)
-- [ ] Use SQLite in file-based mode or use a hosted DB
+- [ ] Think about addingg Dockerfile
+- [ ] Deploy backend
+- [ ] Deploy frontend
+- [ ] Use SQLite in file-based mode
 
 Consider:
 
@@ -170,7 +166,6 @@ Optional:
 
 ## Maintenance
 
-- [ ] Create `README.md` with setup and usage
+- [x] Create `README.md` with setup and usage
+- [x] Add `package.json` scripts (`dev`, `lint`, `start`, etc.)
 - [ ] Create migration/reset script for DB
-- [ ] Add `package.json` scripts (`dev`, `lint`, `start`, etc.)
-- [ ] Organize folders for long-term maintainability
