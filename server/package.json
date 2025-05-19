@@ -10,7 +10,10 @@
     "dev": "nodemon index.js",
     "lint": "eslint . --ext js",
     "format": "prettier --check .",
-    "format:fix": "prettier --write ."
+    "format:fix": "prettier --write .",
+    "db:init": "sqlite3 data/habits.sqlite3 < db/schema.sql",
+    "db:seed": "sqlite3 data/habits.sqlite3 < db/seed.sql",
+    "db:migrate": "node db/migrate.js"
   },
   "dependencies": {
     "better-sqlite3": "^11.10.0",
