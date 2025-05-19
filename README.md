@@ -11,16 +11,6 @@ A simple full-stack habit-tracking application built with:
 
 This project uses [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) to manage the frontend and backend apps in a single monorepo.
 
-habit-tracker/
-├── client/ # React frontend (Vite)
-│ └── ...
-├── server/ # Express backend (MVC-style)
-│ └── ...
-├── .gitignore
-├── README.md
-└── package.json
-└── ...
-
 ## Getting Started
 
 ### Prerequisites
