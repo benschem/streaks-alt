@@ -45,10 +45,9 @@ yarn dev
 
 This app uses a local SQLite3 database stored at server/data/habits.sqlite3.
 
-To initialize the schema:
+To initialize the schema and run migrations:
 
 ```bash
-yarn workspace server run db:init
 yarn workspace server run db:migrate
 ```
 

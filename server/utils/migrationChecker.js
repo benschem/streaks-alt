@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import db from '../db/db.js';
+import db from '../db/config.js';
 
 function getCurrentDbVersion() {
   try {
@@ -21,14 +21,16 @@ function getLatestMigrationVersion() {
   return versions.length > 0 ? Math.max(...versions) : 0;
 }
 
-export function assertMigrationsUpToDate() {
+export function exitUnlessSchemaUpToDate() {
   const currentVersion = getCurrentDbVersion();
   const latestVersion = getLatestMigrationVersion();
 
   if (currentVersion < latestVersion) {
     console.error(
-      `⛔ Database schema is out of date (current: ${currentVersion}, latest: ${latestVersion}).\n` +
-        `➡️  Please run migrations before starting the app.`,
+      `⛔ Database schema is out of date (current: ${currentVersion}, latest: ${latestVersion}).`,
+    );
+    console.error(
+      '➡️  Please run migrations before starting the app: `yarn workspace server run db:migrate`',
     );
     process.exit(1);
   }

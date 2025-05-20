@@ -11,9 +11,9 @@
     "lint": "eslint . --ext js",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
-    "db:init": "sqlite3 data/habits.sqlite3 < db/schema.sql",
-    "db:seed": "sqlite3 data/habits.sqlite3 < db/seed.sql",
-    "db:migrate": "node db/migrate.js"
+    "db:drop": "rm -f data/habits.sqlite3 data/habits.sqlite3-shm data/habits.sqlite3-wal && echo 'Database dropped'",
+    "db:migrate": "node db/migrate.js",
+    "db:seed": "sqlite3 data/habits.sqlite3 < db/seed.sql"
   },
   "dependencies": {
     "better-sqlite3": "^11.10.0",

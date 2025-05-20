@@ -1,10 +1,10 @@
 import express from 'express';
 // No routes yet to use `db`, so...
 // eslint-disable-next-line no-unused-vars
-import db from './db/db.js';
-import { assertMigrationsUpToDate } from './utils/checkMigrations.js';
+import db from './db/config.js';
+import { exitUnlessSchemaUpToDate } from './utils/migrationChecker.js';
 
-assertMigrationsUpToDate(); // 💥 Exit early if schema is out of date
+exitUnlessSchemaUpToDate();
 
 const app = express();
 const PORT = process.env.PORT || 3030;
