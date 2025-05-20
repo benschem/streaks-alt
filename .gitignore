@@ -9,19 +9,20 @@ lerna-debug.log*
 
 # === Node.js ===
 node_modules/
-client/dist/
-client/dist-ssr/
 *.local
 
 # === SQLite ===
 *.sqlite3
 *.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm
 
 # === Vite cache ===
 .vite/
 
 # === Env files ===
 .env
+.env.local
 .env.*.local
 
 # === OS files ===
@@ -29,7 +30,12 @@ client/dist-ssr/
 
 # === IDEs & editors ===
 .vscode/*
-!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # === Build outputs ===
 client/dist/
